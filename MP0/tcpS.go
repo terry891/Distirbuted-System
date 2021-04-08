@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"net"
 	"os"
+	"strings"
 )
 
 type message struct {
@@ -16,7 +17,7 @@ type message struct {
 }
 
 func prettyPrint(mess string) string {
-	return ""
+	return "d"
 }
 
 func main() {
@@ -42,17 +43,19 @@ func main() {
 		return
 	}
 
-	netData, err := bufio.NewReader(c).ReadString('\n')
-	if err != nil {
-		fmt.Println(err)
-		return
+	for {
+		netData, err := bufio.NewReader(c).ReadString('\n')
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+
+		if strings.TrimSpace(string(netData)) != "" {
+			fmt.Print("-> ", string(netData))
+			c.Write([]byte("Stop")) //Write to client that the message is received
+			fmt.Print("\nStop signal received, successful!\n\n")
+			return
+		}
+
 	}
-
-	// if strings.TrimSpace(string(netData)) != "" {
-	fmt.Print("-> ", string(netData))
-	c.Write([]byte("Stop"))
-	fmt.Print("\nStop signal received, successful!\n\n")
-	return
-	// }
-
 }

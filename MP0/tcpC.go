@@ -43,6 +43,7 @@ func main() {
 
 	if len(arguments) == 1 {
 		CONNECT = "127.0.0.1:1234"
+
 	} else {
 		CONNECT = arguments[1]
 	}
