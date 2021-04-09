@@ -69,10 +69,6 @@ func delay_send(configFile []string, myID string, myIP string, min int, max int,
 		//Generate the time to delay based on min and max, sending this amount to a new goroutine
 		delayMS := min + rand.Intn(max-min)
 
-		//DEBUG
-		// print(" DEBUG: Ready to send message ---- ")
-		// fmt.Println(message, destinationIP, destinationID)
-
 		//New go routine to execute the delay and message send
 		wg.Add(1)
 		go unicast_send(destinationIP, destinationID, myID, message, delayMS, wg)
@@ -124,7 +120,7 @@ func unicast_receive(source string, l net.Listener, wg *sync.WaitGroup) {
 					return
 				} else { //STOP signal from another service, close down unicast_receive and unicast_write routine
 					fmt.Printf(" Stop signal received from ID: %s; Initiate self termination ID: %s\n", sourceID, source)
-					//FIXME: need to enter
+					//FIXME: need to write to stdin to terminate the send go routine
 
 					// var b bytes.Buffer
 					// b.Write([]byte("STOP\n"))
@@ -135,6 +131,7 @@ func unicast_receive(source string, l net.Listener, wg *sync.WaitGroup) {
 					fmt.Fprintf(os.Stdin, "STOP\n")
 					//bufio.NewWriter(os.Stdin).Write([]byte("STOP\n"))
 
+					return
 				}
 			} else {
 				fmt.Printf("Received \"%s\" from process %s, system time is %s\n\n  ", message, sourceID, now)
