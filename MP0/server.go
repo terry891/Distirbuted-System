@@ -16,8 +16,10 @@ type message struct {
 	content string
 }
 
-func prettyPrint(mess string) string {
-	return "d"
+func prettyPrint(mess string) {
+	data := strings.Split(mess, "$$")
+	fmt.Printf("\nEmail recieved!\n")
+	fmt.Printf("  Titled %s\n  From %s to %s with data %s\n  %s\n", data[3], data[1], data[0], data[2], data[4])
 }
 
 func main() {
@@ -51,7 +53,7 @@ func main() {
 		}
 
 		if strings.TrimSpace(string(netData)) != "" {
-			fmt.Print("-> ", string(netData))
+			prettyPrint(string(netData))
 			c.Write([]byte("Stop")) //Write to client that the message is received
 			fmt.Print("\nStop signal received, successful!\n\n")
 			return

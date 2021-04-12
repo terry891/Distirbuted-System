@@ -25,11 +25,11 @@ func readInput(mess *message) {
 	fmt.Print("Please enter email title: ")
 	fmt.Scanf("%s", &mess.title)
 	fmt.Print("Please enter the content: ")
-	fmt.Scanf("%s", &mess.content)
+	mess.content, _ = bufio.NewReader(os.Stdin).ReadString('\n')
 }
 
 func prepareStr(mess *message) string {
-	data := mess.to + "$de$" + mess.from + "$de$" + mess.date + "$de$" + mess.title + "$de$" + mess.content + "$de$"
+	data := mess.to + "$$" + mess.from + "$$" + mess.date + "$$" + mess.title + "$$" + mess.content
 	return data
 }
 
