@@ -18,7 +18,7 @@ Server input format: ```go run server.go HostIP ```
 
  Client input format: ```go run client.go HostIP ClientIP username```
 
-``` sh
+``` bash
 go run server.go 127.0.0.1:1111
 go run client.go 127.0.0.1:1234  127.0.0.1:1111  terry
 go run client.go 127.0.0.1:1235  127.0.0.1:1111  tianshu
@@ -41,8 +41,9 @@ Communication between Client and Server:
   * `username $$ OFFLINE` (signal server that client 'username' is going offline, remove DNS entry)
 
 * Client -> Client
-  * `self $$ EXIT` (signal the client receiving message thread to shut down)
-
+  
+* `self $$ EXIT` (signal the client receiving message thread to shut down)
+  
 * Server -> Client
   * `ServerIP $$ EXIT`   (signal client to shut down since the server is closing)
   * fromName $$ toName $$ message` (send message to the destination client)

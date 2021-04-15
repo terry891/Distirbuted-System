@@ -139,9 +139,9 @@ func main() {
 		//Keep getting values from channel, skip if there isn't any value ready
 		select {
 		case dataDump, _ := <-data:
-			if (len(dataDump)) == 0 {
-				continue
-			}
+			// if (len(dataDump)) == 0 {
+			// 	continue
+			// }
 
 			//Get parsed message information from the data channel
 			fromName := dataDump[0]
