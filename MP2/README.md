@@ -54,17 +54,33 @@ Communication between Client and Server:
 
   * `ServerIP $$ EXIT` (signal the server receiving message thread to shut down)
 
-    
 
-### 3. Codes in Action
+
+### 3. Underlying Architecture
+
+**Note**: each numbered block is a functionaniltiy available to node
+
+**Note**: <u>each colored rectangle block represents a thread/go-routine</u>
+
+Time Diagram:
+
+![](./imgs/diagram1.png)
+
+State diagram:
+
+![](./imgs/diagram2.png)
+
+
+
+### 4. Codes in Action
 
 Server:
 
-![](/Users/tianshu/Desktop/Local/CS/Distributive System/MP/Codes/MP1/imgs/1.png)
+![](./imgs/1.png)
 
 Client 1:
 
-![](/Users/tianshu/Desktop/Local/CS/Distributive System/MP/Codes/MP1/imgs/2.png)
+![](./imgs/2.png)
 
 Client 2:
 

@@ -7,6 +7,7 @@
 * Client: client.go stores input from user into a struct called message, and forward this struct in the form of []byte to the server.go node via TCP connection
 * Server: upon receiving a message from client, the server prints out an ackowledgement message and the message in a near format
 * Note: only one to one connection is establsihed. The server cannot accept more than one client
+* **Server.go and Client.go are meant to run in different terminals. Each as a main() function.** Do not use go build
 
 ### 2. Runing & Testing
 
@@ -19,7 +20,13 @@ go run client.go 127.0.0.1:1235
 
 
 
-### 3. Codes in Action
+### 3. Underlying Strcutrue
+
+![](./imgs/diagram.png)
+
+
+
+### 4. Codes in Action
 
 client.go:
 

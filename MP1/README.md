@@ -34,11 +34,23 @@ STOP
 
 
 
+### 3. Underlying Structure
+
+**Note**: each numbered block is a functionaniltiy available to node
+
+**Note**: <u>each colored rectangle block represents a thread/go-routine</u>
+
+1. node can receive and send message concurrently. Each out going message is sent to a *delay* go-routine to simulate delay using time.Sleep()
+2. node can send *multiple* and receive concurrently. The amount of time to delay is selected randomly
+3. node prints a warning if destination node ID cannot be found in the config.txt file. Node does not generate any other thread (no delay thread)
+4. node receives user input 'STOP' and terminates the receive thread that is constantly listening
+5. node will panic if it tries to send message to an already closed node
+
+![](./imgs/diagram.png)
 
 
 
-
-### 3. Codes in Action
+### 4. Codes in Action
 
 Node 1:
 
