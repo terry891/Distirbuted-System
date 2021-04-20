@@ -76,17 +76,19 @@ State diagram:
 
 Server:
 
-![](./imgs/1.png)
+![](./imgs/s.png)
 
 Client 1:
 
-![](./imgs/2.png)
+![](./imgs/c1.png)
 
 Client 2:
 
+![](./imgs/c2.png)
 
 
-Code in action:
+
+**Code in action:**
 
 ![Run](./imgs/run.gif)
 
